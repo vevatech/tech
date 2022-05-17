@@ -1,0 +1,321 @@
+﻿#if __DESIGNER_DATA
+#error Do not define __DESIGNER_DATA.
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<om:MetaModel MajorVersion="1" MinorVersion="3" Core="2b131234-7959-458d-834f-2dc0769ce683" ScheduleModel="66366196-361d-448d-976f-cab5e87496d2" xmlns:om="http://schemas.microsoft.com/BizTalk/2003/DesignerData">
+    <om:Element Type="Module" OID="736a5d83-90d4-4118-9a7a-e6bbab2cf24f" LowerBound="1.1" HigherBound="77.1">
+        <om:Property Name="ReportToAnalyst" Value="True" />
+        <om:Property Name="Name" Value="DDL.Demo.Orchestration" />
+        <om:Property Name="Signal" Value="False" />
+        <om:Element Type="ServiceDeclaration" OID="69d3fece-fd6d-4d13-bea6-6e1e96c3574e" ParentLink="Module_ServiceDeclaration" LowerBound="18.1" HigherBound="76.1">
+            <om:Property Name="InitializedTransactionType" Value="False" />
+            <om:Property Name="IsInvokable" Value="False" />
+            <om:Property Name="TypeModifier" Value="Internal" />
+            <om:Property Name="ReportToAnalyst" Value="True" />
+            <om:Property Name="Name" Value="EmployeeProcessor" />
+            <om:Property Name="Signal" Value="False" />
+            <om:Element Type="VariableDeclaration" OID="9dc25e0f-a3a1-4085-afb9-3187e3427ed4" ParentLink="ServiceDeclaration_VariableDeclaration" LowerBound="28.1" HigherBound="29.1">
+                <om:Property Name="UseDefaultConstructor" Value="True" />
+                <om:Property Name="Type" Value="DDL.PipelineComponents.XmlValidationException" />
+                <om:Property Name="ParamDirection" Value="In" />
+                <om:Property Name="ReportToAnalyst" Value="True" />
+                <om:Property Name="Name" Value="schemaException" />
+                <om:Property Name="Signal" Value="True" />
+            </om:Element>
+            <om:Element Type="MessageDeclaration" OID="c563afa5-1b14-4e16-b7a6-212ec1cb8737" ParentLink="ServiceDeclaration_MessageDeclaration" LowerBound="25.1" HigherBound="26.1">
+                <om:Property Name="Type" Value="DDL.Demo.Schemas.EmployeeRequest" />
+                <om:Property Name="ParamDirection" Value="In" />
+                <om:Property Name="ReportToAnalyst" Value="True" />
+                <om:Property Name="Name" Value="MSG_EMP_REQ" />
+                <om:Property Name="Signal" Value="True" />
+            </om:Element>
+            <om:Element Type="MessageDeclaration" OID="f457a1c8-dfcc-4499-97d6-8b0438e0607e" ParentLink="ServiceDeclaration_MessageDeclaration" LowerBound="26.1" HigherBound="27.1">
+                <om:Property Name="Type" Value="DDL.Pipeline.XmlValidationError" />
+                <om:Property Name="ParamDirection" Value="In" />
+                <om:Property Name="ReportToAnalyst" Value="True" />
+                <om:Property Name="Name" Value="MSG_XML_VALIDATION_ERROR" />
+                <om:Property Name="Signal" Value="True" />
+            </om:Element>
+            <om:Element Type="MessageDeclaration" OID="24930c69-7058-4e68-9bd0-ec0336a710d2" ParentLink="ServiceDeclaration_MessageDeclaration" LowerBound="27.1" HigherBound="28.1">
+                <om:Property Name="Type" Value="DDL.Demo.Schemas.EmployeeResponse" />
+                <om:Property Name="ParamDirection" Value="In" />
+                <om:Property Name="ReportToAnalyst" Value="True" />
+                <om:Property Name="Name" Value="MSG_EMP_RESP" />
+                <om:Property Name="Signal" Value="True" />
+            </om:Element>
+            <om:Element Type="ServiceBody" OID="eaab9c2d-80e2-4c6c-bd7c-356075142db2" ParentLink="ServiceDeclaration_ServiceBody">
+                <om:Property Name="Signal" Value="False" />
+                <om:Element Type="Receive" OID="0b9e38e7-6d6e-405d-9ef2-9737e9b4a09a" ParentLink="ServiceBody_Statement" LowerBound="31.1" HigherBound="34.1">
+                    <om:Property Name="Activate" Value="True" />
+                    <om:Property Name="PortName" Value="Port_1" />
+                    <om:Property Name="MessageName" Value="MSG_EMP_REQ" />
+                    <om:Property Name="OperationName" Value="Operation_1" />
+                    <om:Property Name="OperationMessageName" Value="Request" />
+                    <om:Property Name="ReportToAnalyst" Value="True" />
+                    <om:Property Name="Name" Value="Receive" />
+                    <om:Property Name="Signal" Value="True" />
+                </om:Element>
+                <om:Element Type="Scope" OID="3f78455d-1d73-4506-9ed6-99bef4407ade" ParentLink="ServiceBody_Statement" LowerBound="34.1" HigherBound="72.1">
+                    <om:Property Name="InitializedTransactionType" Value="True" />
+                    <om:Property Name="IsSynchronized" Value="False" />
+                    <om:Property Name="ReportToAnalyst" Value="True" />
+                    <om:Property Name="Name" Value="Schema Validation Scope" />
+                    <om:Property Name="Signal" Value="True" />
+                    <om:Element Type="VariableAssignment" OID="cd33f85e-a0a0-42d2-85a3-a5fbf21b76f5" ParentLink="ComplexStatement_Statement" LowerBound="39.1" HigherBound="48.1">
+                        <om:Property Name="Expression" Value="Microsoft.XLANGs.Pipeline.XLANGPipelineManager.ExecuteReceivePipeline(&#xD;&#xA;    (typeof(DDL.Pipeline.ExtendedXmlValidation)),MSG_EMP_REQ);&#xD;&#xA;&#xD;&#xA;System.Diagnostics.Trace.WriteLine(&quot;Orch Name :&quot; + Microsoft.XLANGs.Core.Service.RootService.Name);&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;" />
+                        <om:Property Name="ReportToAnalyst" Value="True" />
+                        <om:Property Name="Name" Value="Schema Validation" />
+                        <om:Property Name="Signal" Value="False" />
+                    </om:Element>
+                    <om:Element Type="Construct" OID="f0e6cb51-8298-4191-aa03-a162cdf1e7e9" ParentLink="ComplexStatement_Statement" LowerBound="48.1" HigherBound="54.1">
+                        <om:Property Name="ReportToAnalyst" Value="True" />
+                        <om:Property Name="Name" Value="Construct Employee Response" />
+                        <om:Property Name="Signal" Value="True" />
+                        <om:Element Type="Transform" OID="ff73ad41-5085-4fb6-a6b7-71a04a025420" ParentLink="ComplexStatement_Statement" LowerBound="51.1" HigherBound="53.1">
+                            <om:Property Name="ClassName" Value="DDL.Demo.Orchestration.Transform.EmpRequest_To_EmpResponse" />
+                            <om:Property Name="ReportToAnalyst" Value="True" />
+                            <om:Property Name="Name" Value="Transform" />
+                            <om:Property Name="Signal" Value="False" />
+                            <om:Element Type="MessagePartRef" OID="da6ed4e4-88e7-4cff-b53f-87066344f4b2" ParentLink="Transform_InputMessagePartRef" LowerBound="52.112" HigherBound="52.123">
+                                <om:Property Name="MessageRef" Value="MSG_EMP_REQ" />
+                                <om:Property Name="ReportToAnalyst" Value="True" />
+                                <om:Property Name="Name" Value="MessagePartReference_4" />
+                                <om:Property Name="Signal" Value="False" />
+                            </om:Element>
+                            <om:Element Type="MessagePartRef" OID="765e6866-732d-4375-8463-98040fa63e1e" ParentLink="Transform_OutputMessagePartRef" LowerBound="52.36" HigherBound="52.48">
+                                <om:Property Name="MessageRef" Value="MSG_EMP_RESP" />
+                                <om:Property Name="ReportToAnalyst" Value="True" />
+                                <om:Property Name="Name" Value="MessagePartReference_5" />
+                                <om:Property Name="Signal" Value="False" />
+                            </om:Element>
+                        </om:Element>
+                        <om:Element Type="MessageRef" OID="314fad5b-d75d-407f-9861-f2bf7b7288ee" ParentLink="Construct_MessageRef" LowerBound="49.31" HigherBound="49.43">
+                            <om:Property Name="Ref" Value="MSG_EMP_RESP" />
+                            <om:Property Name="ReportToAnalyst" Value="True" />
+                            <om:Property Name="Signal" Value="False" />
+                        </om:Element>
+                    </om:Element>
+                    <om:Element Type="Catch" OID="b3d72482-b8ad-449c-81ab-bcd9a9d9a333" ParentLink="Scope_Catch" LowerBound="57.1" HigherBound="70.1">
+                        <om:Property Name="ExceptionName" Value="exSchemaValidation" />
+                        <om:Property Name="ExceptionType" Value="Microsoft.XLANGs.Pipeline.XLANGPipelineManagerException" />
+                        <om:Property Name="IsFaultMessage" Value="False" />
+                        <om:Property Name="ReportToAnalyst" Value="True" />
+                        <om:Property Name="Name" Value="Validation Exception Handler" />
+                        <om:Property Name="Signal" Value="True" />
+                        <om:Element Type="Construct" OID="9f26e692-50d5-4103-995e-73db1759d81e" ParentLink="Catch_Statement" LowerBound="60.1" HigherBound="69.1">
+                            <om:Property Name="ReportToAnalyst" Value="True" />
+                            <om:Property Name="Name" Value="Construct Employee Response" />
+                            <om:Property Name="Signal" Value="True" />
+                            <om:Element Type="MessageAssignment" OID="e1fd312d-fe5e-46f9-be50-9bde21b782e7" ParentLink="ComplexStatement_Statement" LowerBound="63.1" HigherBound="66.1">
+                                <om:Property Name="Expression" Value="schemaException = (DDL.PipelineComponents.XmlValidationException)exSchemaValidation.InnerException;&#xD;&#xA;MSG_XML_VALIDATION_ERROR = schemaException.ErrorCollection;&#xD;&#xA;" />
+                                <om:Property Name="ReportToAnalyst" Value="False" />
+                                <om:Property Name="Name" Value="MessageAssignment_1" />
+                                <om:Property Name="Signal" Value="False" />
+                            </om:Element>
+                            <om:Element Type="Transform" OID="69809bd7-929a-4890-8f85-2b308be827f1" ParentLink="ComplexStatement_Statement" LowerBound="66.1" HigherBound="68.1">
+                                <om:Property Name="ClassName" Value="DDL.Demo.Orchestration.Transform.ValidationError_To_EmpResponse" />
+                                <om:Property Name="ReportToAnalyst" Value="True" />
+                                <om:Property Name="Name" Value="Transform" />
+                                <om:Property Name="Signal" Value="True" />
+                                <om:Element Type="MessagePartRef" OID="287fcfff-ac29-4095-a43a-f68dbe8ab568" ParentLink="Transform_InputMessagePartRef" LowerBound="67.121" HigherBound="67.132">
+                                    <om:Property Name="MessageRef" Value="MSG_EMP_REQ" />
+                                    <om:Property Name="ReportToAnalyst" Value="True" />
+                                    <om:Property Name="Name" Value="MessagePartReference_1" />
+                                    <om:Property Name="Signal" Value="False" />
+                                </om:Element>
+                                <om:Element Type="MessagePartRef" OID="c33d6866-0073-494c-955e-e49108ea57aa" ParentLink="Transform_InputMessagePartRef" LowerBound="67.134" HigherBound="67.158">
+                                    <om:Property Name="MessageRef" Value="MSG_XML_VALIDATION_ERROR" />
+                                    <om:Property Name="ReportToAnalyst" Value="True" />
+                                    <om:Property Name="Name" Value="MessagePartReference_2" />
+                                    <om:Property Name="Signal" Value="False" />
+                                </om:Element>
+                                <om:Element Type="MessagePartRef" OID="84f8b02a-d9d6-4cbc-b882-80a66cca92ba" ParentLink="Transform_OutputMessagePartRef" LowerBound="67.40" HigherBound="67.52">
+                                    <om:Property Name="MessageRef" Value="MSG_EMP_RESP" />
+                                    <om:Property Name="ReportToAnalyst" Value="True" />
+                                    <om:Property Name="Name" Value="MessagePartReference_3" />
+                                    <om:Property Name="Signal" Value="False" />
+                                </om:Element>
+                            </om:Element>
+                            <om:Element Type="MessageRef" OID="0d56bf69-ae0c-4523-94e8-332290f313f1" ParentLink="Construct_MessageRef" LowerBound="61.35" HigherBound="61.47">
+                                <om:Property Name="Ref" Value="MSG_EMP_RESP" />
+                                <om:Property Name="ReportToAnalyst" Value="True" />
+                                <om:Property Name="Signal" Value="False" />
+                            </om:Element>
+                            <om:Element Type="MessageRef" OID="2dd08817-0bdd-47af-a34e-64951feea676" ParentLink="Construct_MessageRef" LowerBound="61.49" HigherBound="61.73">
+                                <om:Property Name="Ref" Value="MSG_XML_VALIDATION_ERROR" />
+                                <om:Property Name="ReportToAnalyst" Value="True" />
+                                <om:Property Name="Signal" Value="False" />
+                            </om:Element>
+                        </om:Element>
+                    </om:Element>
+                </om:Element>
+                <om:Element Type="Send" OID="b08ea3f4-d94f-4f6d-b91c-914c1fb1e5bc" ParentLink="ServiceBody_Statement" LowerBound="72.1" HigherBound="74.1">
+                    <om:Property Name="PortName" Value="Port_2" />
+                    <om:Property Name="MessageName" Value="MSG_EMP_RESP" />
+                    <om:Property Name="OperationName" Value="Operation_1" />
+                    <om:Property Name="OperationMessageName" Value="Request" />
+                    <om:Property Name="ReportToAnalyst" Value="True" />
+                    <om:Property Name="Name" Value="Send" />
+                    <om:Property Name="Signal" Value="True" />
+                </om:Element>
+            </om:Element>
+            <om:Element Type="PortDeclaration" OID="989ba229-4e8e-48d9-ae68-2852a1a8ee4c" ParentLink="ServiceDeclaration_PortDeclaration" LowerBound="21.1" HigherBound="23.1">
+                <om:Property Name="PortModifier" Value="Implements" />
+                <om:Property Name="Orientation" Value="Left" />
+                <om:Property Name="PortIndex" Value="-1" />
+                <om:Property Name="IsWebPort" Value="False" />
+                <om:Property Name="OrderedDelivery" Value="False" />
+                <om:Property Name="DeliveryNotification" Value="None" />
+                <om:Property Name="Type" Value="DDL.Demo.Orchestration.PortType_1" />
+                <om:Property Name="ParamDirection" Value="In" />
+                <om:Property Name="ReportToAnalyst" Value="True" />
+                <om:Property Name="Name" Value="Port_1" />
+                <om:Property Name="Signal" Value="False" />
+                <om:Element Type="PhysicalBindingAttribute" OID="15016246-07f9-4b88-860c-482d9e325b21" ParentLink="PortDeclaration_CLRAttribute" LowerBound="21.1" HigherBound="22.1">
+                    <om:Property Name="InPipeline" Value="Microsoft.BizTalk.DefaultPipelines.XMLReceive" />
+                    <om:Property Name="OutPipeline" Value="Microsoft.BizTalk.DefaultPipelines.XMLTransmit" />
+                    <om:Property Name="TransportType" Value="FILE" />
+                    <om:Property Name="URI" Value="C:\@Blog\XmlValidation\FileDrop\ExtendedXmlValidation.In.Orchestration\In\*.xml" />
+                    <om:Property Name="IsDynamic" Value="False" />
+                    <om:Property Name="Signal" Value="False" />
+                </om:Element>
+            </om:Element>
+            <om:Element Type="PortDeclaration" OID="d0ac66c3-dc63-4933-b610-753eed6e71c9" ParentLink="ServiceDeclaration_PortDeclaration" LowerBound="23.1" HigherBound="25.1">
+                <om:Property Name="PortModifier" Value="Uses" />
+                <om:Property Name="Orientation" Value="Left" />
+                <om:Property Name="PortIndex" Value="-1" />
+                <om:Property Name="IsWebPort" Value="False" />
+                <om:Property Name="OrderedDelivery" Value="False" />
+                <om:Property Name="DeliveryNotification" Value="None" />
+                <om:Property Name="Type" Value="DDL.Demo.Orchestration.PortType_2" />
+                <om:Property Name="ParamDirection" Value="In" />
+                <om:Property Name="ReportToAnalyst" Value="True" />
+                <om:Property Name="Name" Value="Port_2" />
+                <om:Property Name="Signal" Value="False" />
+                <om:Element Type="PhysicalBindingAttribute" OID="2fb6bd8c-2712-4e42-a146-cfd73fc57655" ParentLink="PortDeclaration_CLRAttribute" LowerBound="23.1" HigherBound="24.1">
+                    <om:Property Name="InPipeline" Value="Microsoft.BizTalk.DefaultPipelines.XMLReceive" />
+                    <om:Property Name="OutPipeline" Value="Microsoft.BizTalk.DefaultPipelines.XMLTransmit" />
+                    <om:Property Name="TransportType" Value="FILE" />
+                    <om:Property Name="URI" Value="C:\@Blog\XmlValidation\FileDrop\ExtendedXmlValidation.In.Orchestration\Out\%MessageId%.xml" />
+                    <om:Property Name="IsDynamic" Value="False" />
+                    <om:Property Name="Signal" Value="False" />
+                </om:Element>
+            </om:Element>
+        </om:Element>
+        <om:Element Type="PortType" OID="1e054e81-0c5d-424c-a7cd-78ab9a31c496" ParentLink="Module_PortType" LowerBound="4.1" HigherBound="11.1">
+            <om:Property Name="Synchronous" Value="False" />
+            <om:Property Name="TypeModifier" Value="Internal" />
+            <om:Property Name="ReportToAnalyst" Value="True" />
+            <om:Property Name="Name" Value="PortType_1" />
+            <om:Property Name="Signal" Value="False" />
+            <om:Element Type="OperationDeclaration" OID="d6e411f3-2d00-4188-b3cf-2ed02c97bf96" ParentLink="PortType_OperationDeclaration" LowerBound="6.1" HigherBound="10.1">
+                <om:Property Name="OperationType" Value="OneWay" />
+                <om:Property Name="ReportToAnalyst" Value="True" />
+                <om:Property Name="Name" Value="Operation_1" />
+                <om:Property Name="Signal" Value="False" />
+                <om:Element Type="MessageRef" OID="a6f91bd2-c6e3-4b5d-bd14-96416695ed83" ParentLink="OperationDeclaration_RequestMessageRef" LowerBound="8.13" HigherBound="8.45">
+                    <om:Property Name="Ref" Value="DDL.Demo.Schemas.EmployeeRequest" />
+                    <om:Property Name="ReportToAnalyst" Value="True" />
+                    <om:Property Name="Name" Value="Request" />
+                    <om:Property Name="Signal" Value="False" />
+                </om:Element>
+            </om:Element>
+        </om:Element>
+        <om:Element Type="PortType" OID="cc097f75-e7f8-4c0a-85eb-ff8f138c646b" ParentLink="Module_PortType" LowerBound="11.1" HigherBound="18.1">
+            <om:Property Name="Synchronous" Value="False" />
+            <om:Property Name="TypeModifier" Value="Internal" />
+            <om:Property Name="ReportToAnalyst" Value="True" />
+            <om:Property Name="Name" Value="PortType_2" />
+            <om:Property Name="Signal" Value="False" />
+            <om:Element Type="OperationDeclaration" OID="3892adaa-1bcc-4b6b-b63e-0e8aa51f940a" ParentLink="PortType_OperationDeclaration" LowerBound="13.1" HigherBound="17.1">
+                <om:Property Name="OperationType" Value="OneWay" />
+                <om:Property Name="ReportToAnalyst" Value="True" />
+                <om:Property Name="Name" Value="Operation_1" />
+                <om:Property Name="Signal" Value="False" />
+                <om:Element Type="MessageRef" OID="05d8992e-dc05-428f-823e-106d0c9ce7c1" ParentLink="OperationDeclaration_RequestMessageRef" LowerBound="15.13" HigherBound="15.46">
+                    <om:Property Name="Ref" Value="DDL.Demo.Schemas.EmployeeResponse" />
+                    <om:Property Name="ReportToAnalyst" Value="True" />
+                    <om:Property Name="Name" Value="Request" />
+                    <om:Property Name="Signal" Value="False" />
+                </om:Element>
+            </om:Element>
+        </om:Element>
+    </om:Element>
+</om:MetaModel>
+#endif // __DESIGNER_DATA
+[Microsoft.XLANGs.BaseTypes.BPELExportable(false)]
+module DDL.Demo.Orchestration
+{
+    internal porttype PortType_1
+    {
+        oneway Operation_1
+        {
+            DDL.Demo.Schemas.EmployeeRequest
+        };
+    };
+    internal porttype PortType_2
+    {
+        oneway Operation_1
+        {
+            DDL.Demo.Schemas.EmployeeResponse
+        };
+    };
+    [Microsoft.XLANGs.BaseTypes.BPELExportable(false)]
+    internal service EmployeeProcessor
+    {
+        [Microsoft.XLANGs.BaseTypes.PhysicalBinding("FILE", "C:\\@Blog\\XmlValidation\\FileDrop\\ExtendedXmlValidation.In.Orchestration\\In\\*.xml", typeof(Microsoft.BizTalk.DefaultPipelines.XMLReceive))]
+        port implements PortType_1 Port_1;
+        [Microsoft.XLANGs.BaseTypes.PhysicalBinding("FILE", "C:\\@Blog\\XmlValidation\\FileDrop\\ExtendedXmlValidation.In.Orchestration\\Out\\%MessageId%.xml", typeof(Microsoft.BizTalk.DefaultPipelines.XMLTransmit))]
+        port uses PortType_2 Port_2;
+        message DDL.Demo.Schemas.EmployeeRequest MSG_EMP_REQ;
+        message DDL.Pipeline.XmlValidationError MSG_XML_VALIDATION_ERROR;
+        message DDL.Demo.Schemas.EmployeeResponse MSG_EMP_RESP;
+        DDL.PipelineComponents.XmlValidationException schemaException;
+        body ()
+        {
+            [Microsoft.XLANGs.BaseTypes.DesignerPosition("0b9e38e7-6d6e-405d-9ef2-9737e9b4a09a")]
+            activate receive (Port_1.Operation_1, MSG_EMP_REQ);
+            schemaException = new DDL.PipelineComponents.XmlValidationException();
+            [Microsoft.XLANGs.BaseTypes.DesignerPosition("3f78455d-1d73-4506-9ed6-99bef4407ade")]
+            scope
+            {
+                body
+                {
+                    [Microsoft.XLANGs.BaseTypes.DesignerPosition("cd33f85e-a0a0-42d2-85a3-a5fbf21b76f5")]
+                    Microsoft.XLANGs.Pipeline.XLANGPipelineManager.ExecuteReceivePipeline(
+                        (typeof(DDL.Pipeline.ExtendedXmlValidation)),MSG_EMP_REQ);
+                    
+                    System.Diagnostics.Trace.WriteLine("Orch Name :" + Microsoft.XLANGs.Core.Service.RootService.Name);
+                    
+                    
+                    
+                    
+                    [Microsoft.XLANGs.BaseTypes.DesignerPosition("f0e6cb51-8298-4191-aa03-a162cdf1e7e9")]
+                    construct MSG_EMP_RESP
+                    {
+                        [Microsoft.XLANGs.BaseTypes.DesignerPosition("ff73ad41-5085-4fb6-a6b7-71a04a025420")]
+                        transform (MSG_EMP_RESP) = DDL.Demo.Orchestration.Transform.EmpRequest_To_EmpResponse (MSG_EMP_REQ);
+                    }
+                }
+                exceptions
+                {
+                    [Microsoft.XLANGs.BaseTypes.DesignerPosition("b3d72482-b8ad-449c-81ab-bcd9a9d9a333")]
+                    catch (Microsoft.XLANGs.Pipeline.XLANGPipelineManagerException exSchemaValidation)
+                    {
+                        [Microsoft.XLANGs.BaseTypes.DesignerPosition("9f26e692-50d5-4103-995e-73db1759d81e")]
+                        construct MSG_EMP_RESP, MSG_XML_VALIDATION_ERROR
+                        {
+                            [Microsoft.XLANGs.BaseTypes.DesignerPosition("e1fd312d-fe5e-46f9-be50-9bde21b782e7")]
+                            schemaException = (DDL.PipelineComponents.XmlValidationException)exSchemaValidation.InnerException;
+                            MSG_XML_VALIDATION_ERROR = schemaException.ErrorCollection;
+                            [Microsoft.XLANGs.BaseTypes.DesignerPosition("69809bd7-929a-4890-8f85-2b308be827f1")]
+                            transform (MSG_EMP_RESP) = DDL.Demo.Orchestration.Transform.ValidationError_To_EmpResponse (MSG_EMP_REQ, MSG_XML_VALIDATION_ERROR);
+                        }
+                    }
+                }
+            }
+            [Microsoft.XLANGs.BaseTypes.DesignerPosition("b08ea3f4-d94f-4f6d-b91c-914c1fb1e5bc")]
+            send (Port_2.Operation_1, MSG_EMP_RESP);
+        }
+    }
+}
+
